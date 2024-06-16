@@ -2,7 +2,7 @@ import css from "./SearchBox.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
 // import {  } from "../../redux/store";
-import { setStatusFilter, selectNameFilter } from "../../redux/filtersSlice";
+import { statusFilters, selectNameFilter } from "../../redux/filtersSlice";
 
 export default function SearchBox() {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ export default function SearchBox() {
 
   const handleFilter = (event) => {
     const name = event.target.value.trim();
-    dispatch(setStatusFilter(name));
+    dispatch(statusFilters(name));
   };
   return (
     <>
