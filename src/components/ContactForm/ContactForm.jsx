@@ -19,11 +19,9 @@ const UserChema = Yup.object().shape({
 export default function ContactForm() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    dispatch(addContact(event.target.elements.text.value));
-    form.resetForm();
+  const handleSubmit = (value, action) => {
+    dispatch(addContact(value));
+    action.resetForm();
   };
 
   return (
