@@ -53,7 +53,7 @@ export const selectVisibleContacts = createSelector(
   [selectContacts, selectStatusFilter],
   (contacts, filtersContact) => {
     return contacts.filter((contact) =>
-      contact.status.toLowerCase().includes(filtersContact.toLowerCase())
+      contact.name.toLowerCase().includes(filtersContact.toLowerCase())
     );
   }
 );
