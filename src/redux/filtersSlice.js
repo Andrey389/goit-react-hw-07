@@ -6,18 +6,8 @@ const filtersSlice = createSlice({
     status: "",
   },
   reducers: {
-    statusFilters: {
-      reducer(state, action) {
-        state.status = action.payload;
-      },
-      prepare(value) {
-        return {
-          payload: value,
-          meta: {
-            ga: true,
-          },
-        };
-      },
+    statusFilters: (state, action) => {
+      state.status = action.payload;
     },
   },
 });
