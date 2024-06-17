@@ -1,3 +1,4 @@
+import { createSelector } from "@reduxjs/toolkit";
 import { statusFilters } from "./filtersSlice";
 
 export const selectContacts = (state) => state.contacts.items;
@@ -8,16 +9,11 @@ export const selectError = (state) => state.contacts.error;
 
 export const selectStatusFilter = (state) => state.filters.status;
 
-export const selectVisibleContacts = (state) => {
-  const contacts = selectContacts(state);
-  const statusFilter = selectStatusFilter(state);
-
-  switch (statusFilter) {
-    case statusFilters.active:
-      return contacts.filter((contact) => !contact.completed);
-    case statusFilters.completed:
-      return contacts.filter((contact) => contact.completed);
-    default:
-      return contacts;
+export const selectVisibleContacts = createSelector(
+  [selectContacts, statusFilters],
+  (contacts, textFilter) => {
+    return contacts.filter((contact) =>
+      contact.status.toLowerCase().includes(textFilter.toLowerCase())
+    );
   }
-};
+);
