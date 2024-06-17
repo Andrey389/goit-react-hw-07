@@ -1,12 +1,13 @@
 import css from "./SearchBox.module.css";
 import { useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { statusFilters, selectNameFilter } from "../../redux/filtersSlice";
+import { statusFilters } from "../../redux/filtersSlice";
+import { selectStatusFilter } from "../../redux/selectors";
 
 export default function SearchBox() {
   const id = useId();
   const dispatch = useDispatch();
-  const filter = useSelector(selectNameFilter);
+  const filter = useSelector(selectStatusFilter);
   return (
     <>
       <h2>Find contacts by name</h2>
